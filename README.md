@@ -1,5 +1,5 @@
 # Ex05 Image Carousel
-## Date:16.05.2025
+## Date:09.05.25
 
 ## AIM
 To create a Image Carousel using React 
@@ -39,105 +39,107 @@ Use setInterval to call the nextImage() function at regular intervals.
 Clean up the interval when the component unmounts using clearInterval to prevent memory leaks.
 
 ## PROGRAM
-imagecarousel .js
-// src/ImageCarousel.js
+
+## App.jsx:
+```
 import React, { useState } from 'react';
-import './ImageCarousel.css'; // CSS for styling
+import './App.css';
 
-
-const images = [ "https://via.placehoIder.com/600x300?text=Image+1",
-"https://via.placeholder.com/600x300?text=Image+2",
- 
-"https://via.placehoIder.corn/600x300?text=Image+3", "https://via.placehoIder.corn/600x300?text=Irnage+4"
+const images = [
+  '/im.jpeg', '/aa.jpeg'
 ];
 
+function App() {
+  const [index, setIndex] = useState(0);
 
-const ImageCarousel = () => {
-const [currentlndex, setCurrentindex] = useState(0);
+  const showPrevious = () => {
+    setIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+  };
 
+  const showNext = () => {
+    setIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+  };
 
-const nextlmage = () => {
-setCurrentindex((previndex) => (prevlndex + 1) % images.length);
-};
-
-
-const prevlmage = () => {
-setCurrentindex((prevlndex) => (prevlndex - 1 +images.length)% images.length);
-};
-
-
-return (
-<div className="carousel-container">
-<button className="prev" onClick={prevImage}>{</button>
-<img src={images[currentlndex]} alt={'Slide ${currentlndex + 1}'} className="carousel-image"
-/>
-<button className="next" onClick={nextirnage}>}</button>
-</div>
-);
-};
-
-
-export default ImageCarousel;
-
-
-irnagecarousel.css
-/* src/ImageCarousel.css */
-.carousel-container { display: flex;
-align-items: center;
- 
-justify-content: center; position: relative;
-max-width: 600px; margin: 0 auto; overflow: hidden; border: 2px solid #ddd; border-radius: lOpx;
+  return (
+    <div className="app">
+      <h1 className="title">Ro-Ko Carousel</h1>
+      <div className="carousel">
+        <img src={images[index]} alt="Ro-Ko" className="carousel-image" />
+      </div>
+      <div className="buttons">
+        <button onClick={showPrevious}>Previous</button>
+        <button onClick={showNext}>Next</button>
+      </div>
+      <footer className="footer">K Muni Tejeshwar 212223040102</footer>
+    </div>
+  );
 }
-
-
-.carousel-image { width: 100%; height: auto;
-transition: transform 0.5s ease;
-}
-
-
-button {
-position: absolute; top: 50%;
-transform: translateY(-50%); background-color: rgba(0, 0, 0, 0.5); color: white;
-border: none; padding: l 5px; cursor: pointer; font-size: 20px;
-border-radius: 50%;
-transition: background-color 0.3s ease;
-}
-
-
-button:hover {
-background-color: rgba(0, 0, 0, 0.8);
-}
- 
-.prev {
-left: lOpx;
-}
-
-
-.next {
-right: 1Opx;
-}
-
-
-app.JS
-// src/App.js
-import React from 'react'; import './App.css';
-import ImageCarousel from './ImageCarousel';
-
-
-function App() { return (
-<div className="App">
-<hl>Image Carousel in React</hl>
-<ImageCarousel />
-</div>
-);
-}
-
 
 export default App;
 
+```
+## App.css:
+```
+.app {
+  text-align: center;
+  margin-top: 40px;
+  background-color: #f0f4f8;  /* light background color */
+  width: 600px;               /* set fixed width */
+  height: 600px;              /* set fixed height */
+  margin-left: auto;          /* center horizontally */
+  margin-right: auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.carousel {
+  width: 500px;
+  height: auto;
+  margin: 0 auto; /* centers the carousel horizontally */
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #aaa;
+}
+
+.carousel-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto; /* centers the image if needed */
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+button {
+  margin: 0 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* New footer style */
+.footer {
+  margin-top: 30px;
+  font-size: 1rem;
+  color: #555;
+  font-style: italic;
+}
+
+```
 ## OUTPUT
-![image](https://github.com/user-attachments/assets/913a6027-192d-4f75-a9bc-2962b7183c50)
+![image](https://github.com/user-attachments/assets/6a7c114f-136c-4949-9877-eb0f7d35e3b3)
+![image](https://github.com/user-attachments/assets/6c173015-4b90-4a82-b6ef-f0dc66aad5f8)
 
 
 ## RESULT
